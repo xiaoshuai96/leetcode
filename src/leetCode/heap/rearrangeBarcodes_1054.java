@@ -1,8 +1,6 @@
 package leetCode.heap;
 
-import javax.jnlp.IntegrationService;
 import java.util.Arrays;
-import java.util.TreeMap;
 
 /**
  * 在一个仓库里，有一排条形码，其中第i个条形码为 barcodes[i]。
