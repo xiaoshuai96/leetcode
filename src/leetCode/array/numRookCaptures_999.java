@@ -33,7 +33,7 @@ public class numRookCaptures_999 {
              {'.','.','.','B','.','.','.','.'},
              {'.','.','.','.','.','.','.','.'},
              {'.','.','.','.','.','.','.','.'}};
-        numRookCaptures(board);
+        numRookCaptures01(board);
     }
 
     /**
@@ -44,7 +44,7 @@ public class numRookCaptures_999 {
      * @param board
      * @return
      */
-    public static int numRookCaptures(char[][] board){
+    public static int numRookCaptures01(char[][] board){
         int count = 0,row = 0,col = 0;
         //1.先找到车的位置
         A:for (int i = 0; i < board.length; i++) {
