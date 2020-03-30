@@ -34,17 +34,21 @@ import java.util.Queue;
  */
 public class maxDistance_1162 {
     public static void main(String[] args) {
-        int[][] grid = new int[][]{{1,0,0,0,0},
-                                   {0,0,1,0,0},
-                                   {0,0,0,0,0},
-                                   {0,0,0,0,1},
-                                   {1,0,0,0,0}};
+        int[][] grid = new int[][]{{1,0,0,0,0,0,0},
+                                   {0,0,0,0,0,1,0},
+                                   {0,0,0,0,0,0,0},
+                                   {1,0,0,0,0,0,0},
+                                   {0,0,0,0,0,0,0},
+                                   {0,0,0,0,0,0,0},
+                                   {0,0,0,1,0,0,0}};
         int i = maxDistance(grid);
+        System.out.println(i);
     }
 
     /**
      * 执行用时 :16 ms, 在所有 Java 提交中击败了89.75% 的用户
      * 内存消耗 :42.2 MB, 在所有 Java 提交中击败了99.00%的用户
+     * 最后被占领的陆地就是离那些“1”最远的地方
      * @param grid
      * @return
      */
