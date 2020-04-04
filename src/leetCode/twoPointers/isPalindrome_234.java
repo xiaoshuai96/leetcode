@@ -1,4 +1,4 @@
-package leetCode.twoPoniters;
+package leetCode.twoPointers;
 
 import java.util.ArrayList;
 import java.util.List;

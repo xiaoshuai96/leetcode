@@ -1,4 +1,4 @@
-package leetCode.twoPoniters;
+package leetCode.twoPointers;
 /**
  * 实现 strStr() 函数。
  *
