@@ -59,4 +59,31 @@ public class compressString_interview_0106 {
         return sb.length() >= S.length() ? S : sb.toString();
     }
 
+    /**
+     * 2020-04-04
+     * 执行用时 :91 ms, 在所有 Java 提交中击败了19.04% 的用户
+     * 内存消耗 :40.7 MB, 在所有 Java 提交中击败了100.00%的用户
+     * @param S
+     * @return
+     */
+    public static String compressString02(String S) {
+        if (S.length() == 0 || S.length() == 1) {
+            return S;
+        }
+        int curr = 0,next = 0;
+        String res = "";
+        while (next < S.length()) {
+            if (res.length() > S.length()) return S;
+            if (S.charAt(curr) == S.charAt(next)) {
+                next++;
+            } else {
+                res += (String.valueOf(S.charAt(curr))+(next-curr));
+                curr = next;
+                next++;
+            }
+        }
+        res += (String.valueOf(S.charAt(S.length() - 1)) + (next - curr));
+        return res.length() >= S.length() ? S : res;
+    }
+
 }
