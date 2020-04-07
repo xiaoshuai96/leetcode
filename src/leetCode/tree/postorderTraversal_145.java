@@ -1,6 +1,7 @@
 package leetCode.tree;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -29,5 +30,31 @@ public class postorderTraversal_145 {
         postorderTraversal(root.right);
         list.add(root.value);
         return list;
+    }
+
+    /**
+     *
+     * @param root
+     * @return
+     */
+    public static List<Integer> postorderTraversal02(TreeNode root) {
+        LinkedList<TreeNode> stack = new LinkedList<>();
+        LinkedList<Integer> output = new LinkedList<>();
+        if (root == null) {
+            return output;
+        }
+
+        stack.add(root);
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pollLast();
+            output.addFirst(node.val);
+            if (node.left != null) {
+                stack.add(node.left);
+            }
+            if (node.right != null) {
+                stack.add(node.right);
+            }
+        }
+        return output;
     }
 }

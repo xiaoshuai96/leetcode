@@ -74,4 +74,24 @@ public class smallerNumbersThanCurrent_1365 {
         }
         return temp;
     }
+
+    /**
+     * 时间复杂度O(n^2)
+     * @param nums
+     * @return
+     */
+    public static int[] smallerNumbersThanCurrent02(int[] nums){
+        int[] res = new int[nums.length];
+        int count;
+        for (int i = 0; i < nums.length; i++) {
+            count = 0;
+            for (int j = 0; j < nums.length; j++) {
+                if (nums[i] > nums[j]) {
+                    count++;
+                }
+            }
+            res[i] = count;
+        }
+        return res;
+    }
 }
