@@ -42,4 +42,27 @@ public class getKthFromEnd_interview_22 {
         }
         return head;
     }
+
+    /**
+     * 快慢指针的思想：先让快指针走k步，然后慢指针和快指针再一起走，等到快指针走到链表尾部，
+     * 慢指针的位置就是需要返回的链表的头节点
+     *
+     * 执行用时 :0 ms, 在所有 Java 提交中击败了100.00% 的用户
+     * 内存消耗 :37.9 MB, 在所有 Java 提交中击败了100.00%的用户
+     * @param head
+     * @param k
+     * @return
+     */
+    public static ListNode getKthFromEnd02(ListNode head, int k){
+        ListNode former = head,latter = head;
+        while(k != 0){
+            former = former.next;
+            k--;
+        }
+        while(former != null){
+            former = former.next;
+            latter = latter.next;
+        }
+        return latter;
+    }
 }
