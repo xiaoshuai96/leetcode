@@ -56,6 +56,11 @@ public class myAtoi_8 {
         System.out.println(i);
     }
 
+    /**
+     *
+     * @param str
+     * @return
+     */
     public static int myAtoi(String str) {
         str = str.trim();
         if (str.length() == 0) return 0;
