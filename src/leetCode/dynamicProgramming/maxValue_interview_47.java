@@ -62,18 +62,14 @@ public class maxValue_interview_47 {
      * @return
      */
     public static int maxValue02(int[][] grid) {
-        int cow = grid.length;
-        int col = grid[0].length;
-        for (int i = 1; i < col; i++) {
-            grid[0][i] += grid[0][i - 1];
-        }
-        for(int i = 1;i < cow; i++) {
-            for (int j = 0; j < col; j++) {
-                if (j == 0){
-                    grid[i][j] += grid[i-1][j];
-                }else {
-                    grid[i][j] += Math.max(grid[i-1][j],grid[i][j-1]);
-                }
+        int cow = grid.length,col = grid[0].length;
+        //初始化第一行
+        for(int i = 1;i < col;i++) grid[0][i] += grid[0][i-1];
+        //初始化第一列
+        for(int j = 1;j < cow;j++) grid[j][0] += grid[j-1][0];
+        for (int i = 1; i < cow; i++) {
+            for (int j = 1; j < col; j++) {
+                grid[i][j] += Math.max(grid[i][j-1],grid[i-1][j]);
             }
         }
         return grid[cow-1][col-1];
