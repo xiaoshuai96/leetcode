@@ -66,4 +66,31 @@ public class minDistance_72 {
         }
         return D[n][m];
     }
+
+    /**
+     * 执行用时 :6 ms, 在所有 Java 提交中击败了92.65% 的用户
+     * 内存消耗 :40 MB, 在所有 Java 提交中击败了5.26%的用户
+     * @param word1
+     * @param word2
+     * @return
+     */
+    public static int minDistance02(String word1, String word2){
+        int row = word1.length();
+        int col = word2.length();
+        int[][] dp = new int[row+1][col+1];
+        if (row * col == 0) return row + col;//有空串存在
+        //初始化最左边的列和最上边的行
+        for (int i = 1;i <= row ; i++) dp[i][0] = i;
+        for (int j = 1;j <= col ; j++) dp[0][j] = j;
+        for (int i = 1; i <= row; i++) {
+            for (int j = 1; j <= col; j++) {
+                if (word1.charAt(i-1) == word2.charAt(j-1)) {
+                    dp[i][j] = dp[i - 1][j - 1];
+                } else {
+                    dp[i][j] = Math.min(dp[i-1][j-1],Math.min(dp[i-1][j],dp[i][j-1]))+1;
+                }
+            }
+        }
+        return dp[row][col];
+    }
 }
