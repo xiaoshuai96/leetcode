@@ -1,5 +1,4 @@
 package leetCode.depthFirstSearch;
-
 import java.util.ArrayDeque;
 import java.util.HashMap;
 import java.util.Map;
@@ -43,7 +42,7 @@ import java.util.Queue;
 public class orangesRotting_994 {
     public static void main(String[] args) {
         int[][] grid = {{2,1,1},{1,1,0},{0,1,1}};
-        int i = orangesRotting(grid);
+        int i = orangesRotting02(grid);
         System.out.println(i);
     }
     public static int orangesRotting(int[][] grid) {
@@ -51,7 +50,6 @@ public class orangesRotting_994 {
         int[] dc = new int[]{0, -1, 0, 1};
         int R = grid.length, C = grid[0].length;
 
-        // queue : all starting cells with rotten oranges
         Queue<Integer> queue = new ArrayDeque();
         Map<Integer, Integer> depth = new HashMap();
         for (int r = 0; r < R; ++r){
@@ -63,7 +61,6 @@ public class orangesRotting_994 {
                 }
             }
         }
-
         int ans = 0;
         while (!queue.isEmpty()) {
             int code = queue.remove();
@@ -87,5 +84,64 @@ public class orangesRotting_994 {
                     return -1;
         return ans;
 
-        }
     }
+
+    /**
+     * 执行用时 :3 ms, 在所有 Java 提交中击败了86.45% 的用户
+     * 内存消耗 :39.2 MB, 在所有 Java 提交中击败了66.67%的用户
+     * @param grid
+     * @return
+     */
+    public static int orangesRotting02(int[][] grid){
+        int row = grid.length,col = grid[0].length;
+        Queue<int[]> queue = new ArrayDeque();
+        int count = 0;//统计新鲜橘子的数量
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (grid[i][j] == 2) {
+                    queue.add(new int[]{i,j});
+                }
+                if (grid[i][j] == 1) {
+                    count++;
+                }
+            }
+        }
+        int res = 0;
+        while (count > 0 && !queue.isEmpty()) {
+            res++;
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                int[] temp = queue.poll();
+                int r = temp[0],c = temp[1];//(x,y)
+                //上
+                if (r > 0 && grid[r-1][c] == 1) {
+                    grid[r-1][c] = 2;
+                    count--;
+                    queue.add(new int[]{r-1,c});
+                }
+                //下
+                if (r < grid.length-1 && grid[r+1][c] == 1) {
+                    grid[r+1][c] = 2;
+                    count--;
+                    queue.add(new int[]{r+1,c});
+                }
+                //左
+                if (c > 0 && grid[r][c-1] == 1) {
+                    grid[r][c-1] = 2;
+                    count--;
+                    queue.add(new int[]{r,c-1});
+                }
+                //右
+                if (c < grid[0].length-1 && grid[r][c+1] == 1) {
+                    grid[r][c+1] = 2;
+                    count--;
+                    queue.add(new int[]{r,c+1});
+                }
+            }
+        }
+        if (count > 0) {
+            return -1;
+        }
+        return res;
+    }
+}
