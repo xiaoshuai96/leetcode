@@ -1,6 +1,4 @@
-package leetCode.depthFirstSearch;
-
-import java.util.HashMap;
+package leetCode.Depth_Breadth_FirstSearch;
 
 /**
  * 给定一个包含了一些 0 和 1的非空二维数组 grid , 一个岛屿是由四个方向(水平或垂直)的1(代表土地)构成的组合。

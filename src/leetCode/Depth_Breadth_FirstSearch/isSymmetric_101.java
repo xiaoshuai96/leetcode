@@ -1,4 +1,4 @@
-package leetCode.depthFirstSearch;
+package leetCode.Depth_Breadth_FirstSearch;
 
 /**
  * 给定一个二叉树，检查它是否是镜像对称的。
