@@ -25,8 +25,6 @@ package leetCode.twoPointers;
  * 输入：nums = [2,2,2,1,2,2,1,2,2,2], k = 2
  * 输出：16
  *
- *
- *
  * 提示：
  *
  *     1 <= nums.length <= 50000
