@@ -1,6 +1,7 @@
-package leetCode.array;
+package leetCode.stack;
 
 import java.util.Arrays;
+import java.util.Stack;
 
 /**
  * 根据每日 气温 列表，请重新生成一个列表，对应位置的输出是需要再等待多久温度才会升高超过该日的天数。
@@ -15,7 +16,7 @@ public class dailyTemperatures_739 {
     public static void main(String[] args) {
         int[] T = {55,38,53,81,61,93,97,32,43,78};
         //         3  1  1  2  1  1  0  1  1  0
-        int[] temperatures = dailyTemperatures(T);
+        int[] temperatures = dailyTemperatures02(T);
         System.out.println(Arrays.toString(temperatures));
     }
 
@@ -36,6 +37,30 @@ public class dailyTemperatures_739 {
                     break;
                 }
             }
+        }
+        return res;
+    }
+
+    /**
+     * 单调栈
+     *      *  -  *
+     *      *  -  *
+     *      *  -  *
+     *      *  -  *
+     *      *  -  *
+     *      *******
+     * @param T
+     * @return
+     */
+    public static int[] dailyTemperatures02(int[] T) {
+        int[] res = new int[T.length];
+        Stack<Integer> stack = new Stack<>();
+        for (int i = 0; i < T.length; i++) {
+            while (!stack.isEmpty() && T[i] > T[stack.peek()]){
+                Integer pop = stack.pop();
+                res[pop] = i - pop;
+            }
+            stack.push(i);
         }
         return res;
     }
