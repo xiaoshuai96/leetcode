@@ -15,5 +15,6 @@ public class changeNumber_two {
         y = x ^ y;//新x再次与y异或得到旧x，赋值给新y
         x = x ^ y;//新的x与新y异或得到旧y，赋值给新x
         System.out.println("交换之后的值  x : "+x+"\t y : "+y);
+
     }
 }
