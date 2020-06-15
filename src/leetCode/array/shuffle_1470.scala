@@ -31,13 +31,13 @@ package leetCode.array
  *     nums.length == 2n
  * 1 <= nums[i] <= 10^3
  **/
-class shuffle_1470_scala {
+class shuffle_1470 {
   def main(args: Array[String]): Unit = {
     val n = 4
     var nums = Array(1,2,3,4,4,3,2,1)
     shuffle(nums,n)
   }
-  def shuffle(nums : Array[Int],n :Int): Array[Int] ={
+  def shuffle(nums : Array[Int],n : Int): Array[Int] ={
     var count = 0
     var res = new Array[Int](2*n)
     for (i <- Range(0,nums.length,2)){

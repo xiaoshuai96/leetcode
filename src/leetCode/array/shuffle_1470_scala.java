@@ -33,7 +33,7 @@ import java.util.Arrays;
  *     nums.length == 2n
  *     1 <= nums[i] <= 10^3
  */
-public class shuffle_1470 {
+public class shuffle_1470_scala {
     public static void main(String[] args) {
         int[] nums = {1,2,3,4,4,3,2,1};
         int[] shuffle = shuffle(nums, 4);
