@@ -1,5 +1,4 @@
 package leetCode.array;
-
 /**
  * 请你实现一个类 SubrectangleQueries ，它的构造函数的参数是一个 rows x cols 的矩形（这里用整数矩阵表示），
  * 并支持以下两种操作：

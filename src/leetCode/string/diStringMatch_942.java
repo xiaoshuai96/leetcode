@@ -37,11 +37,11 @@ public class diStringMatch_942 {
     public static void main(String[] args) {
         String S = "DDI";
 //        int[] res = diStringMatch(S);
-        int[] res = diStringMatch2(S);
+        int[] res = diStringMatch02(S);
         System.out.println(Arrays.toString(res));
     }
 
-    public static int[] diStringMatch(String S) {
+    public static int[] diStringMatch01(String S) {
         int[] res = new int[S.length()+1];
         String[] s = S.split("");
         for (int i = 0; i < res.length; i++) {
@@ -54,26 +54,24 @@ public class diStringMatch_942 {
                     continue;
                 } else {
                     //否则交换两个数字的位置
-                    res[i] = res[i] ^ res[i+1];
+                    res[i]   = res[i] ^ res[i+1];
                     res[i+1] = res[i] ^ res[i+1];
-                    res[i] = res[i] ^ res[i+1];
+                    res[i]   = res[i] ^ res[i+1];
                 }
-            } else if (s[i].equals("D")) {
+            } else {
                 if (res[i] > res[i + 1]) {
                     continue;
                 } else {
-                    res[i] = res[i] ^ res[i+1];
+                    res[i]   = res[i] ^ res[i+1];
                     res[i+1] = res[i] ^ res[i+1];
-                    res[i] = res[i] ^ res[i+1];
+                    res[i]   = res[i] ^ res[i+1];
                 }
-            } else {
-                break;
             }
         }
         return res;
     }
     //官方代码
-    public static int[] diStringMatch2(String S){
+    public static int[] diStringMatch02(String S){
         int N = S.length();
         int lo = 0, hi = N;
         int[] ans = new int[N + 1];
