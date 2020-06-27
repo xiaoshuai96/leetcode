@@ -43,4 +43,19 @@ public class xorOperation_1486 {
         }
         return res;
     }
+
+    /**
+     * 执行用时：0 ms, 在所有 Java 提交中击败了100.00% 的用户
+     * 内存消耗：36.3 MB, 在所有 Java 提交中击败了100.00% 的用户
+     * @param n
+     * @param start
+     * @return
+     */
+    public static int xorOperation02(int n, int start) {
+        int res = 0;
+        for(int i = 0;i < n;i++){
+            res ^= (start + 2*i);
+        }
+        return res;
+    }
 }
