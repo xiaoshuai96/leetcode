@@ -42,7 +42,7 @@ public class constructMaximumBinaryTree_654 {
      * @return
      */
     public static TreeNode constructMaximumBinaryTree(int[] nums){
-        return buildTree(0,nums.length-1,nums);
+        return buildTree(0,nums.length - 1,nums);
     }
     private static TreeNode buildTree(int start,int end,int[] nums){
         if (start > end) {
@@ -56,7 +56,7 @@ public class constructMaximumBinaryTree_654 {
     }
     private static int findMax(int start,int end,int[] nums){
         int max = Integer.MIN_VALUE , index = 0;
-        for (int i = 0; i < nums.length; i++) {
+        for (int i = start; i <= end ; i++) {
             if (max < nums[i]) {
                 max = nums[i];
                 index = i;
