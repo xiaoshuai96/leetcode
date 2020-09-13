@@ -37,6 +37,8 @@ public class permute_46 {
      * @param track
      */
     private static void backTrack(int[] nums, LinkedList<Integer> track){
+        //如果数组的大小和当前list的大小相同，则表示现在list中已经存在了一种全排列的可能
+        //直接加到res中，并返回
         if (nums.length == track.size()) {
             res.add(new LinkedList<>(track));
             return;
@@ -48,6 +50,33 @@ public class permute_46 {
             track.add(nums[i]);
             backTrack(nums,track);
             track.removeLast();
+        }
+    }
+
+
+    /**
+     * 执行用时：2 ms, 在所有 Java 提交中击败了82.94% 的用户
+     * 内存消耗：39.9 MB, 在所有 Java 提交中击败了83.69% 的用户
+     * @param nums
+     * @return
+     */
+    public List<List<Integer>> permute02(int[] nums) {
+        if(nums.length == 0 || nums == null){
+            return res;
+        }
+        trackBack(nums,new ArrayList<Integer>());
+        return res;
+    }
+    private void trackBack(int[] nums,List<Integer> list){
+        if(nums.length == list.size()){
+            res.add(new ArrayList<Integer>(list));
+            return ;
+        }
+        for(int i = 0;i < nums.length;i++){
+            if(list.contains(nums[i])) continue;
+            list.add(nums[i]);
+            trackBack(nums,list);
+            list.remove(list.size() - 1);
         }
     }
 }
