@@ -1,5 +1,7 @@
 package leetCode.tree;
 
+import leetCode.TreeNode;
+
 /**
  * Given two binary trees original and cloned and given a reference to a node target in the original tree.
  *
@@ -29,7 +31,7 @@ public class getTargetCopy_1379 {
      * @return
      */
     public final TreeNode getTargetCopy(final TreeNode original,
-                                          final TreeNode cloned, final TreeNode target) {
+                                        final TreeNode cloned, final TreeNode target) {
         if(original == null){
             return null;
         }

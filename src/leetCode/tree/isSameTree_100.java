@@ -1,5 +1,7 @@
 package leetCode.tree;
 
+import leetCode.TreeNode;
+
 /**
  * 给定两个二叉树，编写一个函数来检验它们是否相同。
  *
@@ -37,7 +39,7 @@ public class isSameTree_100 {
     public static void main(String[] args) {
 
     }
-    public static boolean isSameTree(TreeNode p,TreeNode q){
+    public static boolean isSameTree(TreeNode p, TreeNode q){
         if (p == null && q == null) return true;
         if (p == null || q == null) return false;
         if (p.val != q.val) return false;

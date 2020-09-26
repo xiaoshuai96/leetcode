@@ -1,4 +1,8 @@
 package leetCode.tree;
+
+
+import leetCode.TreeNode;
+
 /**
  *给定两个二叉树，想象当你将它们中的一个覆盖到另一个上时，两个二叉树的一些节点便会重叠。
  *
@@ -29,7 +33,7 @@ public class mergeTrees_617 {
 
     }
     //递归
-    public static TreeNode mergeTrees(TreeNode t1,TreeNode t2){
+    public static TreeNode mergeTrees(TreeNode t1, TreeNode t2){
         if (t1 == null) return t2;
         if (t2 == null) return t1;
         t1.val += t2.val;
@@ -39,12 +43,4 @@ public class mergeTrees_617 {
     }
 
     //迭代
-}
-class TreeNode{
-    int val;
-    TreeNode left;
-    TreeNode right;
-    TreeNode(int x){
-        val = x;
-    }
 }
