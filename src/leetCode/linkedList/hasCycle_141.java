@@ -35,6 +35,12 @@ public class hasCycle_141 {
     public static void main(String[] args) {
 
     }
+
+    /**
+     * 哈希表
+     * @param head
+     * @return
+     */
     public static boolean hashCycle(ListNode head){
         Set<ListNode> set = new HashSet<>();
         while (head != null) {
@@ -46,5 +52,35 @@ public class hasCycle_141 {
             head = head.next;
         }
         return false;
+    }
+
+    /**
+     * 执行用时：0 ms, 在所有 Java 提交中击败了100.00% 的用户
+     * 内存消耗：39 MB, 在所有 Java 提交中击败了54.83% 的用户
+     *
+     * 快慢指针：
+     * 如果链表中存在“环”，那么快慢指针最终会相遇；如果不存在“环”，当快指针指向的结点为null或者
+     * 快指针的next结点指向的结点为null；
+     * @param head
+     * @return
+     */
+    public static boolean hashCycle02(ListNode head){
+        if (head == null || head.next == null) {
+            return false;
+        }
+        ListNode slow = head;
+        ListNode fast = head.next;
+        //快慢指针相遇之后循环截止
+        while (slow != fast) {
+            //当快指针指向的结点为null或者
+            //快指针的next结点指向的结点为null说明链表中不存在环
+            if (fast == null || fast.next == null) {
+                return false;
+            }
+            //慢指针移动一个结点，快指针移动两个结点
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return true;
     }
 }
