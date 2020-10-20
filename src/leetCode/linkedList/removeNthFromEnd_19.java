@@ -1,5 +1,8 @@
 package leetCode.linkedList;
 
+import java.util.Deque;
+import java.util.LinkedList;
+
 /**
  * 给定一个链表，删除链表的倒数第 n 个节点，并且返回链表的头结点。
  *
@@ -81,5 +84,34 @@ public class removeNthFromEnd_19 {
         }
         second.next = second.next.next;
         return dummy.next;
+    }
+
+    /**
+     * 执行用时：1 ms, 在所有 Java 提交中击败了20.95% 的用户
+     * 内存消耗：36.7 MB, 在所有 Java 提交中击败了93.62% 的用户
+     * @param head
+     * @param n
+     * @return
+     */
+    public ListNode removeNthFromEnd03(ListNode head, int n) {
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        Deque<ListNode> stack = new LinkedList<ListNode>();
+        ListNode cur = dummy;
+        //全部入栈
+        while (cur != null) {
+            stack.push(cur);
+            cur = cur.next;
+        }
+        //依次弹出，共弹n次
+        for (int i = 0; i < n; ++i) {
+            stack.pop();
+        }
+        //拿到栈顶的前驱节点
+        ListNode prev = stack.peek();
+        //进行删除操作
+        prev.next = prev.next.next;
+        ListNode ans = dummy.next;
+        return ans;
     }
 }

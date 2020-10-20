@@ -1,7 +1,4 @@
 package leetCode.linkedList;
-
-import leetCode.linkedList.ListNode;
-
 /**
  * 反转一个单链表。
  *
@@ -18,9 +15,9 @@ public class reverseList_206 {
     public static void main(String[] args) {
 
     }
-    //迭代方法
 
     /**
+     * 迭代方法
      * 执行用时 :0 ms, 在所有 Java 提交中击败了100.00% 的用户
      * 内存消耗 :38.2 MB, 在所有 Java 提交中击败了100.00%的用户
      * @param head
@@ -41,7 +38,7 @@ public class reverseList_206 {
     //递归方法
     public static ListNode reverseList2(ListNode head){
         if (head == null || head.next == null) return head;
-        ListNode p = reverseList(head.next);
+        ListNode p = reverseList2(head.next);
         head.next.next = head;
         head.next = null;
         return p;

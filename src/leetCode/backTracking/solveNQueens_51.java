@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *n 皇后问题研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并且使皇后彼此之间不能相互攻击。
+ *n 皇后问题研究的是如何将 n 个皇后放置在 n×n 的棋盘上，
+ * 并且使皇后彼此之间不能相互攻击。
  * 给定一个整数 n，返回所有不同的 n 皇后问题的解决方案。
  *
  * 每一种解法包含一个明确的 n 皇后问题的棋子放置方案，
@@ -31,7 +32,7 @@ import java.util.List;
  */
 public class solveNQueens_51 {
     public static void main(String[] args) {
-        List<List<String>> list = new solveNQueens_51().solveNQueens(1);
+        List<List<String>> list = new solveNQueens_51().solveNQueens(4);
         for (List<String> stringList : list) {
             for (String s : stringList) {
                 System.out.println(s);
@@ -73,7 +74,7 @@ public class solveNQueens_51 {
     //判断当前放置的皇后是否和前面的皇后位置冲突
     public boolean judge(int n,int[] array){
         for(int i = 0;i < n;i++){
-            if(array[n] == array[i] || Math.abs(n-i)==Math.abs(array[n]-array[i])){
+            if(array[n] == array[i] || Math.abs(n-i) == Math.abs(array[n]-array[i])){
                 return false;
             }
         }
