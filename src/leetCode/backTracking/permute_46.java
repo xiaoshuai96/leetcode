@@ -1,4 +1,6 @@
 package leetCode.backTracking;
+import sun.awt.SunHints;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -22,7 +24,14 @@ import java.util.List;
  */
 public class permute_46 {
     public static void main(String[] args) {
-
+        List<List<Integer>> permute = permute(new int[]{1, 2, 3, 4, 5});
+        for (List<Integer> list : permute) {
+            for (Integer i : list) {
+                System.out.print("\t"+i);
+            }
+            System.out.println();
+        }
+        System.out.println(String.format("共有%d种不重复组合",permute.size()));
     }
     static List<List<Integer>> res = new ArrayList<>();
     public static List<List<Integer>> permute(int[] nums){
@@ -37,18 +46,16 @@ public class permute_46 {
      * @param track
      */
     private static void backTrack(int[] nums, LinkedList<Integer> track){
-        //如果数组的大小和当前list的大小相同，则表示现在list中已经存在了一种全排列的可能
-        //直接加到res中，并返回
         if (nums.length == track.size()) {
             res.add(new LinkedList<>(track));
-            return;
+            return ;
         }
-        for (int i = 0; i < nums.length; i++) {
+        for (int i = 0;i < nums.length;i++) {
             if (track.contains(nums[i])) {
                 continue;
             }
             track.add(nums[i]);
-            backTrack(nums,track);
+            backTrack(nums, track);
             track.removeLast();
         }
     }
