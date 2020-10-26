@@ -51,9 +51,8 @@ public class smallerNumbersThanCurrent_1365 {
      */
     public static int[] smallerNumbersThanCurrent(int[] nums) {
         int n = nums.length;
-        int[] temp = new int[n];
         //copy一份原始数组，对它进行排序
-        temp = Arrays.copyOf(nums, n);
+        int[] temp = Arrays.copyOf(nums, n);
         Arrays.sort(temp);
         Map<Integer, Integer> map = new HashMap<>();
         //将比每个数字小的数字记录在散列表中

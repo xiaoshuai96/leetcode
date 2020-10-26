@@ -63,7 +63,7 @@ public class addTwoNumbers_2 {
             int val1 = l1 == null ? 0 : l1.value;
             int val2 = l2 == null ? 0 : l2.value;
             int sum = val1 + val2 + addOne;
-            temp.next = new ListNode(sum%10);
+            temp.next = new ListNode(sum % 10);
             temp = temp.next;
             addOne = sum / 10;
             if (l1 != null) l1 = l1.next;
