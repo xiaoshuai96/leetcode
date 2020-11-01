@@ -33,7 +33,7 @@ public class majorityElement_offer_39 {
         return nums[len / 2];
     }
 
-    //摩尔投票法
+    //摩尔投票法:俗称消耗法
 
     /**
      * 执行用时：1708 ms, 在所有 Java 提交中击败了5.12% 的用户
