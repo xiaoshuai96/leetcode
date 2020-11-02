@@ -48,13 +48,21 @@ public class intersection_349 {
         return arr;
 
     }
-    //version 2.0  这里的改进主要在使用了retainAll方法
+    /**
+     * 执行用时：3 ms, 在所有 Java 提交中击败了95.82% 的用户
+     * 内存消耗：38.8 MB, 在所有 Java 提交中击败了80.62% 的用户
+     * @param nums1
+     * @param nums2
+     * @return
+     */
     public static int[] intersection02(int[] nums1,int[] nums2){
+        //先过滤掉两个数组中重复的数字
         HashSet<Integer> set1 = new HashSet<Integer>();
         for (Integer n : nums1) set1.add(n);
         HashSet<Integer> set2 = new HashSet<Integer>();
         for (Integer n : nums2) set2.add(n);
 
+        //将set1和set2的交集的结果保存在set1中
         set1.retainAll(set2);
 
         int [] output = new int[set1.size()];
