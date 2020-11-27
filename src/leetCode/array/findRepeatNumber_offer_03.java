@@ -82,4 +82,30 @@ public class findRepeatNumber_offer_03 {
         return -1;
 
     }
+
+    /**
+     * 执行用时：1 ms, 在所有 Java 提交中击败了88.75% 的用户
+     * 内存消耗：46 MB, 在所有 Java 提交中击败了93.21% 的用户
+     * @param nums
+     * @return
+     */
+    public int findRepeatNumber04(int[] nums) {
+        int temp = 0;
+        /**
+         * 算法思路：一个萝卜一个坑  因为题目中已经告知了这些数字的范围在0~n-1之间
+         * 那么如果没有重复的数字，在数组按照递增排序时，每个下标和该位置上的数字应该是
+         * 一致的，如果不一致说明该数就是重复的数
+         */
+        for (int i = 0; i < nums.length; i++) {
+            while (nums[i] != i) {
+                if (nums[i] == nums[nums[i]]) {
+                    return nums[i];
+                }
+                temp = nums[i];
+                nums[i] = nums[temp];
+                nums[temp] = temp;
+            }
+        }
+        return -1;
+    }
 }
