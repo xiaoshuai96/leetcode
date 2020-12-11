@@ -1,6 +1,5 @@
 package leetCode.tree;
-
-import LeetCode.TreeNode;
+import leetCode.TreeNode;
 
 /**
  * 给定一个二叉树，计算 整个树 的坡度 。

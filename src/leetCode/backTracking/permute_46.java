@@ -24,38 +24,35 @@ import java.util.List;
  */
 public class permute_46 {
     public static void main(String[] args) {
-        List<List<Integer>> permute = permute(new int[]{1, 2, 3, 4, 5});
+        List<List<Integer>> permute = permute(new int[]{1,2,3});
         for (List<Integer> list : permute) {
             for (Integer i : list) {
                 System.out.print("\t"+i);
             }
             System.out.println();
         }
-        System.out.println(String.format("共有%d种不重复组合",permute.size()));
-    }
-    static List<List<Integer>> res = new ArrayList<>();
-    public static List<List<Integer>> permute(int[] nums){
-        LinkedList<Integer> track = new LinkedList<>();
-        backTrack(nums,track);
-        return res;
     }
 
-    /**
-     * 回溯算法
-     * @param nums
-     * @param track
-     */
-    private static void backTrack(int[] nums, LinkedList<Integer> track){
+    public static List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        backTrack(nums,res,new LinkedList<>());
+        return res;
+    }
+    private static void backTrack(int[] nums,List<List<Integer>> res, LinkedList<Integer> track){
+        //如果当前集合的size等于数组的长度，说明现在已经拿到了一种组合，添加到res结果集中
         if (nums.length == track.size()) {
-            res.add(new LinkedList<>(track));
+            res.add(new ArrayList<>(track));
             return ;
         }
-        for (int i = 0;i < nums.length;i++) {
+        for (int i = 0; i < nums.length; i++) {
             if (track.contains(nums[i])) {
                 continue;
             }
-            track.add(nums[i]);
-            backTrack(nums, track);
+            //选择
+            track.addLast(nums[i]);
+            //递归
+            backTrack(nums, res, track);
+            //撤销选择
             track.removeLast();
         }
     }
@@ -68,13 +65,14 @@ public class permute_46 {
      * @return
      */
     public List<List<Integer>> permute02(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
         if(nums.length == 0 || nums == null){
             return res;
         }
-        trackBack(nums,new ArrayList<Integer>());
+        trackBack(nums,res,new ArrayList<Integer>());
         return res;
     }
-    private void trackBack(int[] nums,List<Integer> list){
+    private void trackBack(int[] nums,List<List<Integer>> res,List<Integer> list){
         if(nums.length == list.size()){
             res.add(new ArrayList<Integer>(list));
             return ;
@@ -82,7 +80,7 @@ public class permute_46 {
         for(int i = 0;i < nums.length;i++){
             if(list.contains(nums[i])) continue;
             list.add(nums[i]);
-            trackBack(nums,list);
+            trackBack(nums,res,list);
             list.remove(list.size() - 1);
         }
     }
