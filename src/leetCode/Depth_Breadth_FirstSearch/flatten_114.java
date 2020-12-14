@@ -1,7 +1,6 @@
 package leetCode.Depth_Breadth_FirstSearch;
 
 import leetCode.TreeNode;
-import scala.annotation.meta.param;
 
 /**
  * 给定一个二叉树，原地将它展开为一个单链表。
