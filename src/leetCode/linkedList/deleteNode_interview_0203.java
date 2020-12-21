@@ -10,7 +10,7 @@ package leetCode.linkedList;
  * 结果：不返回任何数据，但该链表变为a->b->d->e->f
  *
  */
-public class deleteNode_interview0203 {
+public class deleteNode_interview_0203 {
     public static void main(String[] args) {
 
     }
