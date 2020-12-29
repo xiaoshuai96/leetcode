@@ -43,7 +43,6 @@ public class levelOrder_offer_32_III {
             return res;
         }
         queue.add(root);
-        int flag = 0;
         while (!queue.isEmpty()) {
             LinkedList<Integer> tmp = new LinkedList<Integer>();
             for(int i = queue.size(); i > 0; i--) {

@@ -1,10 +1,6 @@
 package leetCode.array;
-
-import scala.reflect.internal.Trees;
-
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.Queue;
 
 /**
  * 编写一种算法，若M × N矩阵中某个元素为0，则将其所在的行与列清零。

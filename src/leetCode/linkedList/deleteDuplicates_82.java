@@ -13,55 +13,56 @@ package leetCode.linkedList;
  */
 public class deleteDuplicates_82 {
     public static void main(String[] args) {
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(2);
-        head.next.next = new ListNode(3);
-        head.next.next.next = new ListNode(3);
-        head.next.next.next.next = new ListNode(4);
-        head.next.next.next.next.next = new ListNode(4);
-        head.next.next.next.next.next.next = new ListNode(5);
-        ListNode listNode = new deleteDuplicates_82().deleteDuplicates(head);
-        while (listNode != null) {
-            System.out.print(listNode.value+"\t");
-        }
+
     }
     /**
+     * 迭代版本
+     * 执行用时：0 ms, 在所有 Java 提交中击败了100.00% 的用户
+     * 内存消耗：38 MB, 在所有 Java 提交中击败了49.13% 的用户
      * tmp     prev   curr
      * -1  ->  1  ->  2  ->  3
      * @param head
      * @return
      */
-    public ListNode deleteDuplicates(ListNode head) {
-        if(head == null || head.next == null){
-            return head;
-        }
-        ListNode dummy = new ListNode(-1);
-        ListNode tmp  = dummy;
+    public ListNode deleteDuplicates01(ListNode head) {
+        ListNode dummy = new ListNode(0);
         dummy.next = head;
-        ListNode prev = dummy.next;
-        ListNode curr = dummy.next.next;
-        while(curr != null){
-            /**
-             * tmp   prev                 curr
-             * 1  ->  2  ->  2  ->  2  ->  3  ->  3  ->  4
-             */
-            if(curr.value == prev.value){
-                //如果相等，继续往后找看还有没有了，有的话全部消灭
-                while (curr != null && curr.value == prev.value) {
-                    curr = curr.next;
+        ListNode cur = dummy;
+        while (cur.next != null && cur.next.next != null) {
+            if (cur.next.value == cur.next.next.value) {
+                ListNode temp = cur.next;
+                //可能不止两个数字相同
+                while (temp != null && temp.next != null && temp.value == temp.next.value ) {
+                    temp = temp.next;
                 }
-                tmp.next = curr;
-                if (curr == null) {
-                    return dummy.next;
-                }
-                prev = curr;
-                curr = curr.next;
-            }else{
-                tmp  = tmp.next;
-                prev = prev.next;
-                curr = curr.next;
+                cur.next = temp.next;
             }
+            else
+                cur = cur.next;
         }
         return dummy.next;
+    }
+
+    /**
+     * 递归版本
+     * 执行用时：1 ms, 在所有 Java 提交中击败了71.62% 的用户
+     * 内存消耗：37.9 MB, 在所有 Java 提交中击败了70.92% 的用户
+     * @param head
+     * @return
+     */
+    public ListNode deleteDuplicates(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        if (head.value == head.next.value) {
+            while (head != null && head.next != null && head.value == head.next.value) {
+                head = head.next;
+            }
+            return deleteDuplicates(head.next);
+        } else {
+            head.next = deleteDuplicates(head.next);
+            return head;
+        }
+
     }
 }
