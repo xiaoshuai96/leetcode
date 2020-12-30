@@ -1,7 +1,5 @@
 package leetCode.interview;
 
-import java.util.Hashtable;
-
 public class minSwap {
     public static void main(String[] args) {
         int[] A = {3,3,8,9,10};
