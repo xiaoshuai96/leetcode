@@ -61,7 +61,8 @@ public class rotate_189 {
     }
 
     /**
-     * 超出时间限制
+     * 执行用时：236 ms, 在所有 Java 提交中击败了24.53% 的用户
+     * 内存消耗：38.7 MB, 在所有 Java 提交中击败了93.29% 的用户
      * @param nums
      * @param k
      */

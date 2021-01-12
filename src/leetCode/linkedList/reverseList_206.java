@@ -41,7 +41,14 @@ public class reverseList_206 {
         return prev;
 
     }
-    //递归方法
+
+    /**
+     * 递归方法
+     * 执行用时：0 ms, 在所有 Java 提交中击败了100.00% 的用户
+     * 内存消耗：38.1 MB, 在所有 Java 提交中击败了69.08% 的用户
+     * @param head
+     * @return
+     */
     public static ListNode reverseList2(ListNode head){
         if (head == null || head.next == null) return head;
         ListNode p = reverseList2(head.next);
