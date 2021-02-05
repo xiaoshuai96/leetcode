@@ -1,4 +1,4 @@
-package leetCode.array;
+package leetCode.slidingWindow;
 
 import java.util.Deque;
 import java.util.LinkedList;
