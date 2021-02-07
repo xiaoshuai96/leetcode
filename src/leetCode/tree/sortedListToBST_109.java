@@ -27,7 +27,7 @@ public class sortedListToBST_109 {
      * @param head
      * @return
      */
-    public static TreeNode sortedListToBST(ListNode head){
+    public TreeNode sortedListToBST(ListNode head){
         if (head == null) {
             return null;
         }
@@ -46,5 +46,28 @@ public class sortedListToBST_109 {
         root.left  = sortedListToBST(head);
         root.right = sortedListToBST(slow.next);
         return root;
+    }
+
+    public TreeNode sortedListToBST02(ListNode head) {
+        return buildTree(head, null);
+    }
+    public TreeNode buildTree(ListNode head, ListNode tail){
+        if(head == tail)
+            return null;
+        ListNode mid = getMid(head, tail);
+        TreeNode root = new TreeNode(mid.val);
+        root.left = buildTree(head, mid);
+        root.right = buildTree(mid.next, tail);
+        return root;
+
+    }
+    //获取中间节点
+    public ListNode getMid(ListNode head, ListNode tail){
+        ListNode slow = head, fast = head;
+        while(fast != tail && fast.next != tail){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
     }
 }

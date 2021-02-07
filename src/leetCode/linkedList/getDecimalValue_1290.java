@@ -73,4 +73,14 @@ public class getDecimalValue_1290 {
         }
         return sum;
     }
+
+    public static int getDecimalValue03(ListNode head){
+        int count = 0;
+        while(head != null){
+            count <<= 1;
+            count += head.value;
+            head = head.next;
+        }
+        return count;
+    }
 }
