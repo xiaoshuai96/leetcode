@@ -53,10 +53,10 @@ public class checkPossibility_665 {
                 continue;
             }
             cnt++;
-            if (i-2>=0 && nums[i-2] > nums[i]) {
-                nums[i] = nums[i-1];
-            }else {
-                nums[i-1] = nums[i];
+            if (i - 2 >= 0 && nums[i - 2] > nums[i]) {
+                nums[i] = nums[i - 1];
+            } else {
+                nums[i - 1] = nums[i];
             }
         }
         return cnt <= 1;

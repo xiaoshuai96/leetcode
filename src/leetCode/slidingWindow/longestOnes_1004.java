@@ -25,7 +25,7 @@ package leetCode.slidingWindow;
  */
 public class longestOnes_1004 {
     public static void main(String[] args) {
-        int[] A = {0};
+        int[] A = {0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1};
         int i = new longestOnes_1004().longestOnes(A, 3);
         System.out.println(i);
     }
@@ -51,7 +51,6 @@ public class longestOnes_1004 {
             }
             res = Math.max(res, right - left + 1);
             right++;
-
         }
         return res;
     }
