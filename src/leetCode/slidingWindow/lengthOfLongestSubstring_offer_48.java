@@ -84,4 +84,17 @@ public class lengthOfLongestSubstring_offer_48 {
         }
         return res;
     }
+
+
+    public int lengthOfLongestSubstring03(String s) {
+        Map<Character, Integer> table = new HashMap<>();
+        int res = 0, temp = 0;
+        for(int i = 0;i < s.length();i++) {
+            int j = table.getOrDefault(s.charAt(i), -1);
+            temp = i - j > temp ? temp + 1 : i - j;
+            res = Math.max(res, temp);
+            table.put(s.charAt(i), i);
+        }
+        return res;
+    }
 }
