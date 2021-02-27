@@ -79,4 +79,24 @@ public class lengthOfLongestSubstring_3 {
         }
         return ans;
     }
+
+
+    public int lengthOfLongestSubstring03(String s) {
+        int res = 0;
+        int len = s.length();
+        int left = 0,right = 0;
+        Set<Character> set = new HashSet<>();
+        while (right < len) {
+            char c = s.charAt(right);
+            //如果集合中有重复的,删除最前面的元素，继续观察集合中是否还包含该重复元素
+            while (set.contains(c)) {
+                //左指针移动
+                set.remove(s.charAt(left++));
+            }
+            set.add(c);
+            res = Math.max(res, right - left + 1);
+            ++right;
+        }
+        return res;
+    }
 }
