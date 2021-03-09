@@ -45,4 +45,12 @@ public class countBits_338 {
         }
         return res;
     }
+
+    public int[] countBits02(int num) {
+        int[] res = new int[num + 1];
+        for(int i = 1;i<= num;i++){  //注意要从1开始，0不满足
+            res[i] = res[i & (i - 1)] + 1;
+        }
+        return res;
+    }
 }
