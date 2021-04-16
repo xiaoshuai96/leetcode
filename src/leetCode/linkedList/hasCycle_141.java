@@ -83,4 +83,25 @@ public class hasCycle_141 {
         }
         return true;
     }
+
+    /**
+     * 执行用时：0 ms, 在所有 Java 提交中击败了100.00% 的用户
+     * 内存消耗：39.7 MB, 在所有 Java 提交中击败了23.86% 的用户
+     * @param head
+     * @return
+     */
+    public static boolean hashCycle03(ListNode head){
+        if (head == null || head.next == null) {
+            return false;
+        }
+        ListNode slow = head,fast = head;
+        while (fast != null && fast.next != null) {
+            if (slow == fast) {
+                return true;
+            }
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return false;
+    }
 }

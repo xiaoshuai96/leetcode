@@ -49,6 +49,6 @@ public class judgeCircle_657 {
                 countLR--;
             }
         }
-        return countUD == 0 && countLR == 0? true : false;
+        return countUD == 0 && countLR == 0 ? true : false;
     }
 }
