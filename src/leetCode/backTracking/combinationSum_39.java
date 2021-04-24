@@ -47,8 +47,8 @@ public class combinationSum_39 {
     }
 
     /**
-     * 执行用时：4 ms, 在所有 Java 提交中击败了53.88% 的用户
-     * 内存消耗：38.9 MB, 在所有 Java 提交中击败了70.59% 的用户
+     * 执行用时：3 ms, 在所有 Java 提交中击败了78.50% 的用户
+     * 内存消耗：38.5 MB, 在所有 Java 提交中击败了85.48% 的用户
      * @param candidates
      * @param target
      * @return

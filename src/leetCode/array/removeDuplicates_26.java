@@ -3,6 +3,7 @@ package leetCode.array;
 import javax.jnlp.IntegrationService;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * 给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
@@ -40,6 +41,29 @@ public class removeDuplicates_26 {
             }
         }
         return i + 1;
+    }
+
+    /**
+     * 非原地修改
+     * @param nums
+     * @return
+     */
+    public int removeDuplicates(int[] nums) {
+        if(nums.length < 1) return nums.length;
+        List<Integer> list = new ArrayList<>();
+        list.add(nums[0]);
+        int flag = nums[0];
+        for(int i = 1;i < nums.length;i++){
+            if(nums[i] != flag){
+                list.add(nums[i]);
+                flag = nums[i];
+            }
+        }
+        int index = 0;
+        for(int i = 0;i < list.size();i++){
+            nums[index++] = list.get(i);
+        }
+        return list.size();
     }
         
 }
