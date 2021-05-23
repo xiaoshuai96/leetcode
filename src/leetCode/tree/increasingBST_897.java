@@ -58,13 +58,18 @@ public class increasingBST_897 {
         if (root == null) {
             return ;
         }
-        if (root.left != null) {
-            inOrder(root.left);
-        }
-        tmp.right = new TreeNode(root.val);
-        tmp = tmp.right;
-        if (root.right != null) {
-            inOrder(root.right);
-        }
+        inOrder(root.left);
+
+        //单独创建结点（复制结点）消耗空间
+        //tmp.right = new TreeNode(root.val);
+        //tmp = tmp.right;
+
+        //改变指针的指向
+        tmp.right = root;
+        root.left = null;
+        tmp = root;
+
+        inOrder(root.right);
+
     }
 }
