@@ -48,4 +48,17 @@ public class rob_198 {
         return dp[len - 1];
     }
 
+    public static int rob02(int[] nums) {
+        int n = nums.length;
+        if (n == 0) return 0;
+        if (n == 1) return nums[0];
+        int first = nums[0], second = nums[1];
+        for (int i = 0; i < n; i++) {
+            int temp = second;
+            second = Math.max(first + nums[i], second);
+            first = second;
+        }
+        return second;
+    }
+
 }
