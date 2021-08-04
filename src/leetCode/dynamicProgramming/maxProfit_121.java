@@ -28,13 +28,64 @@ public class maxProfit_121 {
     }
 
     /**
+     * DP
+     * @param prices
+     * @return
+     */
+    public static int maxProfit(int[] prices) {
+        int len = prices.length;
+        if (len < 2) {
+            return 0;
+        }
+        int[][] dp = new int[len][2];
+        //dp[i][0]代表的是在第i天结束的时候，不持股，手上拥有的现金数
+        //dp[i][1]代表的是在第i天结束的时候，持股，手上拥有的现金数
+        dp[0][0] = 0;
+        dp[0][1] = -prices[0];
+        for (int i = 1; i < len; i++) {
+            /**
+             * dp[i][0] 第i天结束的时候不持股
+             * 等于 max（前一天不持股的最大现金数，前一天持股的最大现金数+今天卖出的钱）
+             * dp[i][1] 第i天结束的时候持股
+             * 等于 max（前一天持股的最大现金数，今天的新买的股票）
+             */
+            dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
+            dp[i][1] = Math.max(dp[i - 1][1], -prices[i]);
+        }
+        return dp[len - 1][0];
+    }
+
+    public static int maxProfit00(int[] prices) {
+        int len = prices.length;
+        if (len < 2) {
+            return 0;
+        }
+        int[] dp = new int[2];
+        //dp[i][0]代表的是在第i天结束的时候，不持股，手上拥有的现金数
+        //dp[i][1]代表的是在第i天结束的时候，持股，手上拥有的现金数
+        dp[0] = 0;
+        dp[1] = -prices[0];
+        for (int i = 1; i < len; i++) {
+            /**
+             * dp[i][0] 第i天结束的时候不持股
+             * 等于 max（前一天不持股的最大现金数，前一天持股的最大现金数+今天卖出的钱）
+             * dp[i][1] 第i天结束的时候持股
+             * 等于 max（前一天持股的最大现金数，今天的新买的股票）
+             */
+            dp[0] = Math.max(dp[0], dp[1] + prices[i]);
+            dp[1] = Math.max(dp[1], -prices[i]);
+        }
+        return dp[0];
+    }
+
+    /**
      *思路：只要我们记录下历史最低点的股票价格，那最好的利润就是当前的价格减去最低点的价格
      * 执行用时 :1 ms, 在所有 Java 提交中击败了99.57% 的用户
      * 内存消耗 :42.9 MB, 在所有 Java 提交中击败了5.02%的用户
      * @param prices
      * @return
      */
-    public static int maxProfit(int[] prices) {
+    public static int maxProfit01(int[] prices) {
         int minPrices = Integer.MAX_VALUE;
         int maxPrices = 0;
         for (int i = 0; i < prices.length; i++) {
@@ -53,7 +104,7 @@ public class maxProfit_121 {
      * @param prices
      * @return
      */
-    public static int maxProfit01(int[] prices) {
+    public static int maxProfit02(int[] prices) {
         int maxPrices = 0;
         for (int i = 0; i < prices.length; i++) {
             for (int j = i+1;j < prices.length;j++){
@@ -72,7 +123,7 @@ public class maxProfit_121 {
      * @param prices
      * @return
      */
-    public static int maxProfit02(int[] prices) {
+    public static int maxProfit03(int[] prices) {
         int maxPrices = 0;
         for (int i = 0; i < prices.length; i++) {
             for (int j = i+1;j < prices.length;j++){

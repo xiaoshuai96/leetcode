@@ -29,12 +29,9 @@ public class canJump_55 {
         if (nums.length == 1) return true;
         // 直接寻找
         int i, m;
-        for (i = 0; i < nums.length - 1; i++)
-        {
-            if (nums[i] == 0) // 只有0的时候会出现无法向后继续寻找
-            {
-                for (m = 0; m < i; m++)
-                {
+        for (i = 0; i < nums.length - 1; i++) {
+            if (nums[i] == 0) { // 只有0的时候会出现无法向后继续寻找
+                for (m = 0; m < i; m++) {
                     if (nums[m] + m > i) break;  // 说明能往后移动
                 }
                 if (m == i) return false;
@@ -57,19 +54,8 @@ public class canJump_55 {
             if (i > k) {
                 return false;
             }
-            k = Math.max(k,i+nums[i]);
+            k = Math.max(k, i + nums[i]);
         }
         return true;
-    }
-
-    public static boolean canJump03(int[] nums) {
-        int count = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (count >= nums.length-1) {
-                return false;
-            }
-            count = Math.max(count,i+nums[i]);
-        }
-        return false;
     }
 }
