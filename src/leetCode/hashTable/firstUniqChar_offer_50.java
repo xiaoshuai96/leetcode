@@ -23,6 +23,8 @@ public class firstUniqChar_offer_50 {
         char c = new firstUniqChar_offer_50().firstUniqChar("leetcode");
         System.out.println(c);
     }
+
+
     public char firstUniqChar(String s) {
         HashMap<Character, Integer> map = new HashMap<Character, Integer>();
         for(char c : s.toCharArray()){
@@ -48,6 +50,17 @@ public class firstUniqChar_offer_50 {
             dic.put(c, !dic.containsKey(c));
         for(Map.Entry<Character, Boolean> d : dic.entrySet()){
             if(d.getValue()) return d.getKey();
+        }
+        return ' ';
+    }
+
+    public char firstUniqChar03(String s) {
+        int[] arr = new int[26];
+        for(char c : s.toCharArray()){
+            arr[c - 'a']++;
+        }
+        for(char c : s.toCharArray()){
+            if(arr[c - 'a'] == 1) return c;
         }
         return ' ';
     }

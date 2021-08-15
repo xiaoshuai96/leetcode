@@ -40,7 +40,7 @@ public class search_offer_53_I {
         int right = i;
         // 若数组中无 target ，则提前返回
         if(j >= 0 && nums[j] != target) return 0;
-        // 搜索左边界 right
+        // 搜索左边界 left
         i = 0; j = nums.length - 1;
         while(i <= j) {
             int m = (i + j) / 2;

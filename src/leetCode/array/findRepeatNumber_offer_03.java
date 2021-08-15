@@ -108,4 +108,13 @@ public class findRepeatNumber_offer_03 {
         }
         return -1;
     }
+
+    public int findRepeatNumber05(int[] nums){
+        int[] temp = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            temp[nums[i]]++;
+            if (temp[nums[i]] > 1) return nums[i];
+        }
+        return -1;
+    }
 }
