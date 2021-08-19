@@ -44,12 +44,29 @@ public class mirrorTree_interview_27 {
      * @param root
      * @return
      */
-    public static  TreeNode mirrorTree(TreeNode root){
+    public TreeNode mirrorTree(TreeNode root){
         if (root == null) return null;
         TreeNode left = mirrorTree(root.left);
         TreeNode right = mirrorTree(root.right);
         root.left = right;
         root.right = left;
         return root;
+    }
+
+
+    public TreeNode mirrorTree02(TreeNode root) {
+        if(root == null) return null;
+        dfs(root);
+        return root;
+    }
+    private void dfs(TreeNode root){
+        if(root == null){
+            return;
+        }
+        TreeNode temp = root.left;
+        root.left = root.right;
+        root.right = temp;
+        dfs(root.left);
+        dfs(root.right);
     }
 }

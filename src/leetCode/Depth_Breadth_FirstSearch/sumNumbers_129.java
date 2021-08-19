@@ -63,7 +63,7 @@ public class sumNumbers_129 {
         if (root == null) {
             return 0;
         }
-        int sum = prevSum * 10 + root.value;
+        int sum = prevSum * 10 + root.val;
         if (root.left == null && root.right == null) {
             return sum;
         } else {

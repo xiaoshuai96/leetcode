@@ -49,25 +49,25 @@ public class rangeSumBST_938 {
     }
     public static void dfs(TreeNode node,int L,int R){
         if (node != null) {
-            if (L <= node.value && node.value <= R) {
-                ans += node.value;
+            if (L <= node.val && node.val <= R) {
+                ans += node.val;
             }
-            if (node.value > L) {
+            if (node.val > L) {
                 dfs(node.right,L,R);
             }
-            if (node.value <= R) {
+            if (node.val <= R) {
                 dfs(node.left,L,R);
             }
         }
     }
 }
 class TreeNode{
-    int value;
+    int val;
     TreeNode left;
     TreeNode right;
 
     public TreeNode(int value) {
-        this.value = value;
+        this.val = value;
     }
 }
 
