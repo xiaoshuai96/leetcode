@@ -19,17 +19,17 @@ import java.util.Arrays;
 public class exchange_Offer_21 {
     public static void main(String[] args) {
         int[] arr = {2,16,3,5,13,1,16,1,12,18,11,8,11,11,5,1};
-        int[] ints = exchange(arr);
-        System.out.println(Arrays.toString(ints));
+
     }
 
     /**
+     * 站在今天的角度看当时写的代码，实在是太拉了~
      * 执行用时：3 ms, 在所有 Java 提交中击败了35.18% 的用户
      * 内存消耗：47.8 MB, 在所有 Java 提交中击败了54.61% 的用户
      * @param nums
      * @return
      */
-    public static int[] exchange(int[] nums){
+    public int[] exchange(int[] nums){
         int left = 0,right = nums.length - 1;
         while (left < right) {
             if (nums[left] % 2 == 0 && nums[right] % 2 == 1) {
@@ -47,7 +47,7 @@ public class exchange_Offer_21 {
         }
         return nums;
     }
-    private static void change(int i,int j,int[] nums){
+    private void change(int i,int j,int[] nums){
         int temp = nums[i];
         nums[i] = nums[j];
         nums[j] = temp;
@@ -72,6 +72,24 @@ public class exchange_Offer_21 {
                 int temp = nums[left];
                 nums[left] = nums[right];
                 nums[right] = temp;
+            }
+        }
+        return nums;
+    }
+
+    /**
+     * fast & slow pointer
+     * @param nums
+     * @return
+     */
+    public int[] exchange03(int[] nums){
+        int count = 0;
+        for (int i = 0; i < nums.length; i++) {
+            //如果当前元素是奇数，那么就交换i位置的元素和count位置的元素
+            //然后再使用count记录i的下一个位置
+            if (nums[i] % 2 == 1) {
+                change(i,count,nums);
+                count++;
             }
         }
         return nums;
