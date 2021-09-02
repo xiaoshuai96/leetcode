@@ -59,8 +59,7 @@ public class exist_offer_12 {
     }
     private boolean dfs(char[][] board,String word,int x,int y,int p){
         //如果边界到头或者地图中的字符和当前遍历的word中的字符不同，返回false
-        if (x >= board.length || x < 0 || y >= board[0].length
-                || y < 0 || word.charAt(p) != board[x][y]) {
+        if (x >= board.length || x < 0 || y >= board[0].length  || y < 0 || word.charAt(p) != board[x][y]) {
             return false;
         }
         if (p == word.length() - 1) return true;

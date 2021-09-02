@@ -28,9 +28,10 @@ public class sumNums_interview_64 {
      * @param n
      * @return
      */
-    public static int sumNums(int n){
-        int sum = n;
-        boolean flag = (n > 0) && (sum += sumNums(n-1)) > 0;
-        return sum;
+    int res = 0;
+    public int sumNums(int n){
+        boolean x = n > 1 && sumNums(n - 1) > 0;
+        res += n;
+        return res;
     }
 }

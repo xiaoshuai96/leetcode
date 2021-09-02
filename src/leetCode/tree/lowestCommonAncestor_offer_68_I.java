@@ -36,7 +36,7 @@ public class lowestCommonAncestor_offer_68_I {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         //祖先节点
         TreeNode ancestor = root;
-        while (true) {
+        while (ancestor != null) {
             //左路
             if (p.val < ancestor.val && q.val < ancestor.val) {
                 ancestor = ancestor.left;
