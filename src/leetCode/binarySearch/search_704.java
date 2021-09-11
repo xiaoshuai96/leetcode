@@ -37,7 +37,7 @@ public class search_704 {
      * @param target
      * @return
      */
-    public int search(int[] nums, int target) {
+    public int search02(int[] nums, int target) {
         int left = 0,right = nums.length - 1;
         while (left <= right) {
             int mid = left + (right - left) / 2;
@@ -58,24 +58,23 @@ public class search_704 {
      * 执行用时：0 ms, 在所有 Java 提交中击败了100.00% 的用户
      * 内存消耗：39.1 MB, 在所有 Java 提交中击败了96.56% 的用户
      */
-    int count = 0;
-    public int search02(int[] nums, int target) {
-        if (nums.length == 1) {
-            return nums[0] == target?0:-1;
-        }
-        return helper(nums,target,0,nums.length);
+    int target;
+    public int search(int[] nums, int _target) {
+        target = _target;
+        int i = 0,j = nums.length - 1;
+        return binarySearch(nums,i,j);
     }
-    public int helper(int[] nums,int target,int left,int right){
-        if (count > nums.length/2+1) return -1;
-        int middle = (left+right)/2;
-        if (nums[middle] == target) {
-            return middle;
-        } else if (nums[middle] > target) {//往左找
-            count+=1;
-            return helper(nums, target, left, middle);
-        } else if (nums[middle] < target) {//往右找
-            count+=1;
-            return helper(nums, target, middle, nums.length);
+    private int binarySearch(int[] nums,int l,int r){
+        int i = l,j = r;
+        while(i <= j){
+            int mid = (i + j) / 2;
+            if(nums[mid] == target){
+                return mid;
+            }
+            if(nums[mid] > target){
+                return binarySearch(nums,l,mid - 1);
+            }
+            return binarySearch(nums,mid + 1,r);
         }
         return -1;
     }

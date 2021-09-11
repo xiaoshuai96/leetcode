@@ -25,8 +25,48 @@ public class findKthLargest_215 {
     public static void main(String[] args) {
 
     }
-    public static int findKthLargest(int[] nums,int k){
+
+    /**
+     * 调用API这种，对于基础算法来说还是少用，可以多写写快排
+     * @param nums
+     * @param k
+     * @return
+     */
+    public static int findKthLargest02(int[] nums,int k){
         Arrays.sort(nums);
         return nums[nums.length-k];
+    }
+
+
+    public int findKthLargest(int[] nums, int k) {
+        int i = quickSearch(nums,0,nums.length - 1,k - 1);
+        return nums[i];
+    }
+    //检索是否找到了目标值，找到了直接返回，否则根据返回值和目标值的关系继续递归
+    private int quickSearch(int[] nums,int lo,int hi,int k){
+        int j = partition(nums,lo,hi);
+        if(j == k){
+            return j;
+        }
+        return j < k ? quickSearch(nums,j + 1,hi,k) : quickSearch(nums,lo,j - 1,k);
+    }
+    //快排思想将数组进行分区
+    private int partition(int[] nums,int lo,int hi){
+        int v = nums[lo];
+        int i = lo,j = hi + 1;
+        while(true){
+            //DESC
+            while(++i <= hi && nums[i] > v);
+            while(--j >= lo && nums[j] < v);
+            if(i >= j){
+                break;
+            }
+            int tmp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = tmp;
+        }
+        nums[lo] = nums[j];
+        nums[j] = v;
+        return j;
     }
 }
